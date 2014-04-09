@@ -12,6 +12,17 @@ When a new exploit is exposed and a solution released by the owners
 of the library, it should be released to effected servers as
 quickly as possible.
 
+## What do I do when a massive 0-day exploit is revealed in OpenSSL?
+
+* panic
+* scream a lot
+* curse the bug
+* curse the fact that the exploit was just revealed
+* pretend everything is okay, and that none of your systems are effective
+* panic some more
+* sigh, calm down, get to work. Make some coffee, you're going to be
+  awake for a while.
+
 ## Am I vulnerable?
 
 For the sake of example, let us look at the Heartbleed vulnerability
@@ -85,3 +96,5 @@ Ideally, upgrading a system library should be an in-place switch to a
 new minor or patch version, then a restart of linked software. If
 possible, a cold reboot is the best way to prove that nothing keeps
 the old library around in memory.
+
+... to be continued
