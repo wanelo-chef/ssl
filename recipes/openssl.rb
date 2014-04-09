@@ -1,4 +1,5 @@
 include_recipe 'build-essential'
+include_recipe 'paths'
 
 helper = SSLHelpers::OpenSSL.new(node)
 
@@ -25,11 +26,14 @@ end
 
 execute 'configure openssl' do
   command %q{./config \
-    --prefix=/opt/local \
-    --openssldir=/opt/local/etc/openssl \
+    --prefix=%s \
+    --openssldir=%s \
     -m32 \
     shared threads \
-    -D_REENTRANT}
+    -D_REENTRANT} % [
+      helper.prefix_dir,
+      helper.openssl_dir
+    ]
   cwd helper.source_directory
   environment helper.build_environment
   not_if { helper.version_installed? }

@@ -19,6 +19,14 @@ module SSLHelpers
       [Chef::Config[:file_cache_path], tar_file].join('/')
     end
 
+    def openssl_dir
+      [node['paths']['etc_dir'], 'openssl'].join('/')
+    end
+
+    def prefix_dir
+      node['paths']['prefix_dir']
+    end
+
     def remote_tar_file
       [config['mirror'], tar_file].join('/')
     end
