@@ -11,6 +11,14 @@ remote_file helper.local_tar_file do
   source helper.remote_tar_file
 end
 
+execute 'verify openssl checksum' do
+  command %{[ "%s" == $(openssl sha1 %s | cut -d' ' -f2) ]} % [
+    helper.tar_file_checksum,
+    helper.local_tar_file
+  ]
+  cwd Chef::Config[:file_cache_path]
+end
+
 execute 'untar openssl' do
   command 'tar xfz %s' % helper.local_tar_file
   cwd Chef::Config[:file_cache_path]

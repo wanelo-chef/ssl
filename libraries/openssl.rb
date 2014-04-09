@@ -35,6 +35,10 @@ module SSLHelpers
       [Chef::Config[:file_cache_path], source_directory_name].join('/')
     end
 
+    def tar_file_checksum
+      config['sha1']
+    end
+
     def version_installed?
       current_version == config['version']
     end
