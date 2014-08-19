@@ -9,14 +9,13 @@ end
 
 remote_file helper.local_tar_file do
   source helper.remote_tar_file
+  checksum helper.configured_checksum
 end
 
-execute 'verify openssl checksum' do
-  command %{[ "%s" == $(openssl sha1 %s | cut -d' ' -f2) ]} % [
-    helper.tar_file_checksum,
-    helper.local_tar_file
-  ]
-  cwd Chef::Config[:file_cache_path]
+if helper.configured_checksum != helper.tar_file_checksum
+  message = "Your configured checksum (#{helper.configured_checksum})"
+  message << " does not match the checksum for #{helper.local_tar_file} (#{helper.tar_file_checksum})."
+  raise message
 end
 
 execute 'untar openssl' do
