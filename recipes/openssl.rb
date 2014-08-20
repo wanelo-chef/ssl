@@ -12,10 +12,14 @@ remote_file helper.local_tar_file do
   checksum helper.configured_checksum
 end
 
-if helper.configured_checksum != helper.tar_file_checksum
-  message = "Your configured checksum (#{helper.configured_checksum})"
-  message << " does not match the checksum for #{helper.local_tar_file} (#{helper.tar_file_checksum})."
-  raise message
+ruby_block 'verify openssl checksum' do
+  block do
+    if helper.configured_checksum != helper.tar_file_checksum
+      message = "Your configured checksum (#{helper.configured_checksum})"
+      message << " does not match the checksum for #{helper.local_tar_file} (#{helper.tar_file_checksum})."
+      raise message
+    end
+  end
 end
 
 execute 'untar openssl' do
