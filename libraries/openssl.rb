@@ -36,6 +36,10 @@ module SSLHelpers
     end
 
     def tar_file_checksum
+      Digest::SHA1.hexdigest(File.read(local_tar_file))
+    end
+
+    def configured_checksum
       config['sha1']
     end
 
