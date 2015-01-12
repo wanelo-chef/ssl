@@ -1,4 +1,9 @@
 module SSLHelpers
+  # SSLHelpers::OpenSSL
+  #
+  # Helper class for wrapping up logic used by the
+  # openssl recipe.
+  #
   class OpenSSL
     include Chef::Mixin::ShellOut
 
@@ -54,11 +59,11 @@ module SSLHelpers
     end
 
     def source_directory_name
-      'openssl-%s' % config['version']
+      format('openssl-%s', config['version'])
     end
 
     def tar_file
-      'openssl-%s.tar.gz' % config['version']
+      format('openssl-%s.tar.gz', config['version'])
     end
   end
 end
