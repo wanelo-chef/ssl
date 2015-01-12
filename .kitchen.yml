@@ -20,4 +20,5 @@ platforms:
 suites:
   - name: openssl
     run_list:
+      - recipe[test-setup::default]
       - recipe[ssl::openssl]
