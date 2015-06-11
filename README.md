@@ -23,6 +23,7 @@ mlogin
 ......
 cd ~
 wget https://www.openssl.org/source/openssl-1.0.1g.tar.gz
+openssl dgst -sha1 openssl-1.0.1g.tar.gz
 mput -f openssl-1.0.1g.tar.gz ~~/public/path/to/my/source/caches/
 exit
 ```
@@ -34,6 +35,8 @@ attribute:
 node['ssl']['openssl']['mirror'] =
   'https://us-east.manta.joyent.com/my-account/public/path/to/my/source/caches'
 ```
+
+Save the SHA1 that you generated for updating attributes later.
 
 ### Installing OpenSSL
 
