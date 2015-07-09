@@ -3,5 +3,5 @@ default['ssl']['openssl']['dependencies'] = %w(
 )
 
 default['ssl']['openssl']['mirror'] = 'https://www.openssl.org/source'
-default['ssl']['openssl']['version'] = '1.0.1n'
-default['ssl']['openssl']['sha1'] = '2f6ea1e0f2724aca1805392e4387df8361442ace'
+default['ssl']['openssl']['version'] = '1.0.1p'
+default['ssl']['openssl']['sha1'] = '9d1977cc89242cd11471269ece2ed4650947c046'
